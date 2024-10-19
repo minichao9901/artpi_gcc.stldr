@@ -1,0 +1,2 @@
+将生成的stldr文件拷贝到STM32CubeIDE安装目录下的如下路径：
+plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.0.0.202105311346\tools\bin\ExternalLoader
