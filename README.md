@@ -1,7 +1,7 @@
 # artpi_gcc.stldr
 artpi_cube.stldr qspi-flash algorithm created by arm-none-eabi-gcc on ubuntu
 
-# linux下用gcc编译器生产ART-PI的qspi flash的烧录文件（stldr文件）
+# linux下用stm32cubeIDE，或者直接用gcc编译器，生成ART-PI的qspi flash的烧录文件（stldr文件）
 # D1 参考工程
 ubuntu下，git clone如下工程。这个是MDK下的工程，可以直接生成artpi的stldr算法，经过我验证，确实可以用。
 我们的目的是，将其转化为stm32cubeIDE的工程，用arm-none-eabi-gcc来编译和生成stldr算法。
