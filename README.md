@@ -270,12 +270,12 @@ stprog_path=/home/xujc/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
 
 ```
 
-这个Makefile的用法：
-make：编译生成stdlr文件
-make clean：清理工程
-make 1：用readelf -a命令分析stdlr文件的结构，并将这个stdlr文件拷贝到stm32CubeProgrammer的ExternalLoader路径下去，这样stm32CubeProgrammer图形化界面可以使用
-make 2：命令行模式读内部flash内容
-make 3：命令行模式读qspi-flash内容，使用我们编译好的stdlr文件
+这个Makefile的用法：  
+make：编译生成stdlr文件  
+make clean：清理工程  
+make 1：用readelf -a命令分析stdlr文件的结构，并将这个stdlr文件拷贝到stm32CubeProgrammer的ExternalLoader路径下去，这样stm32CubeProgrammer图形化界面可以使用  
+make 2：命令行模式读内部flash内容  
+make 3：命令行模式读qspi-flash内容，使用我们编译好的stdlr文件  
 
 # D3 运行结果
 执行make编译
@@ -299,11 +299,11 @@ stm32cubeProgrammer的读界面，读出0x90000000地址的内容，然后与我
 ![输入图片说明](https://foruda.gitee.com/images/1729352163133960255/9c8f432e_8231215.png "屏幕截图")
 
 # D4 总结与反思
-在MDK下很轻松就可以制作一个stldr文件，但是用stm32cubeIDE却折腾了很久。现在反思和复盘整个过程，有几点值得注意的：
-1）换ram区域，是否可以？----DTCM不可以，AXISRAM可以。
-2）stm32h7xx_hal_qspi.c中的QSPI_WaitFlagStateUntilTimeout函数部分，使用了HAL_GetTick函数，是否需要注释掉？  ----不影响
-3）Load_Src.c注释掉read函数，是否可以？----不影响
-4）Load_Src.c中那4个函数，不使用used属性----不行，函数会被优化掉
-5) ld文件的PHDRS（program headers）----不可少，否则stm32cubeProgrammer直接不识别stldr文件。
+在MDK下很轻松就可以制作一个stldr文件，但是用stm32cubeIDE却折腾了很久。现在反思和复盘整个过程，有几点值得注意的：  
+1）换ram区域，是否可以？----DTCM不可以，AXISRAM可以。  
+2）stm32h7xx_hal_qspi.c中的QSPI_WaitFlagStateUntilTimeout函数部分，使用了HAL_GetTick函数，是否需要注释掉？  ----不影响  
+3）Load_Src.c注释掉read函数，是否可以？----不影响  
+4）Load_Src.c中那4个函数，不使用used属性----不行，函数会被优化掉  
+5) ld文件的PHDRS（program headers）----不可少，否则stm32cubeProgrammer直接不识别stldr文件。  
 
-由于gcc下ld文件比较复杂，因此建议先在MDK下制作，确保整个工程可以成功产生stldr文件，然后考虑移植到stm32cubeIDE环境下去。
+由于gcc下ld文件比较复杂，因此建议先在MDK下制作，确保整个工程可以成功产生stldr文件，然后考虑移植到stm32cubeIDE环境下去。  
